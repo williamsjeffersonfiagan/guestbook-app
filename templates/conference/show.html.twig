@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de la conférence</title>
+</head>
+<body>
+    <h1>{{ conference.city }} ({{ conference.year }})</h1>
+
+    {% if conference.isInternational %}
+        <p>🌍 Cette conférence est internationale.</p>
+    {% endif %}
+
+    <h2>Commentaires</h2>
+    <ul>
+        {% for comment in conference.comments %}
+            <li>
+                <strong>{{ comment.author }}</strong> :
+                {{ comment.text }} <br/>
+                <small>Posté le {{ comment.createdAt|date('d/m/Y H:i') }}</small>
+            </li>
+        {% else %}
+            <li>Aucun commentaire pour cette conférence.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ path('homepage') }}">← Retour à la liste</a></p>
+</body>
+</html>

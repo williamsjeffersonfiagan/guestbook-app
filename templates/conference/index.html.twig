@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des conférences</title>
+</head>
+<body>
+    <h1>Conférences</h1>
+
+    <ul>
+        {% for conference in conferences %}
+            <li>
+                <a href="{{ path('conference_show', { id: conference.id }) }}">
+                    {{ conference.city }} ({{ conference.year }})
+                </a>
+                {% if conference.isInternational %}
+                    🌍
+                {% endif %}
+            </li>
+        {% else %}
+            <li>Aucune conférence enregistrée.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
